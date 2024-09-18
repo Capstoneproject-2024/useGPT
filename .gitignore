@@ -1,0 +1,5 @@
+#api key들
+.env
+
+#가상환경 제외
+keyword/
