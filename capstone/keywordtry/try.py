@@ -17,17 +17,17 @@ client = AsyncOpenAI(api_key=GPT_API_KEY)
 
 
 async def extract(client):
-    for i in range(3):
-        prompt = inject_variables(keyword_extract_prompt, textList[i])
+    for i in range(len(textList)):
+        prompt = inject_variables(publisher_keyword_extract_prompt, textList[i])
         response = await client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": prompt + prompt_always_keywords},
             ],
-            # temperature=0.75,
-            # top_p=1,
-            # frequency_penalty=0,
-            # presence_penalty=0.75,
+            temperature=1.3,
+            top_p=0.8,
+            frequency_penalty=0,
+            presence_penalty=1,
         )
 
         # print(response)

@@ -3,7 +3,7 @@ You must answer not sentence, just keywords in Korean language for your response
 """
 
 # 아직 작가 이름 못둘러쌈..
-keyword_extract_prompt = """
+publisher_keyword_extract_prompt = """
 You are a word-renowned book critic.
  Your task is to extract 5 keywords from a text which represents introductions and summary of a book written by publisher.
 If the text is incomplete or cut off, infer the likely conclusion based on the available context.
@@ -15,7 +15,7 @@ Here’s how you should extract the keywords:
     It shouldn't be just single words like 'passion' or 'mystery.'.
     Keywords should be more descriptive phrases like 'passion for trends,' 'investigating a murder,' or 'modern female solidarity.'
 3. determine the ranking of keywords by correlation with text and show it in order.
-4. Whenever your keywords is come across with character names or fictional places that are unique to the book, enclose them in single quotation marks ('') to distinguish them.
+4. Whenever your keywords come across with character names or fictional places that are unique to the book, enclose them in single quotation marks ('') to distinguish them.
 
 
 This is precaution what you should be careful for:
