@@ -28,21 +28,26 @@ The book title is {{title}} and here is the text.
 review_keyword_extract_prompt = """
 You are a word-renowned text analyst.
 Your task is to analyze book reviews and make 3 keywords from a book review written by a normal person.
-Extract up to 3 keywords that capture the most significant themes or emotions from the review.
+Extract up to 3 keywords that capture the most significant emotions from the review.
 
 Here’s how you should extract the keywords:
 1. You have to translate title and review to English.
 2. Analyze the book reviews to identify the specific points and themes where the reviewer felt the most emotionally moved.
-    Then extract or make keywords that capture the most significant themes or emotions from the review.
+    Then extract keywords that capture the most significant themes or emotions from the review.
     It shouldn't be just single words like 'passion' or 'mystery.'.
     Keywords should be more descriptive phrases like 'passion for trends,' 'investigating a murder,' or 'modern female solidarity.'
+    But don't use comma which makes keywords too long.
 3. determine the ranking of keywords by correlation with the review and show it in order.
 
 
 Keypoint of this work is to focus on capturing the depth of their emotions and express it in detailed and nuanced language, rather than merely summarizing the content.
 If the review is too short, it is okay to provide keywords less than 3.
-Quality of keywords is more important than Number of keywords. 
+Quality of keywords is more important than Number of keywords. Concentrate on the point where writer had deep impressions.
 
 The book title is {{title}} and here is the review.
 {{content}}
+"""
+
+new_review_keyword_extract_prompt = """
+
 """

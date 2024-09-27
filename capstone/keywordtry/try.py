@@ -6,7 +6,7 @@ import asyncio
 from textEX import textList
 from const import *
 from utils import inject_variables
-from reviewEX import reviewList
+from reviewEX import *
 
 load_dotenv()
 
@@ -39,14 +39,14 @@ async def extractPublisher(client):
 
 # 리뷰 키워드 추출
 async def extractReview(client):
-    for i in range(len(reviewList)):
-        prompt = inject_variables(review_keyword_extract_prompt, reviewList[i])
+    for i in range(len(goodReviewList)):
+        prompt = inject_variables(review_keyword_extract_prompt, goodReviewList[i])
         response = await client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": prompt + prompt_always_kor},
             ],
-            temperature=1.3,
+            temperature=0.5,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=1,
