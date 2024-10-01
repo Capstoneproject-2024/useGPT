@@ -27,9 +27,25 @@ forJsonl = []
 for i in range(50):
     forJsonl.append(
         {
-            "prompt": inject_variables(publisher_keyword_extract_prompt, bookInfoL[i])
-            + prompt_always_kor,
-            "completion": answerL[i],
+            "messages": [
+                {
+                    "role": "system",
+                    "content": publisher_keyword_extract_promptFineTuning
+                    + prompt_always_kor,
+                },
+                {
+                    "role": "user",
+                    "content": "The book title is \n"
+                    + bookInfoL[i]["title"]
+                    + "\n"
+                    + "and here is the text.\n"
+                    + bookInfoL[i]["content"],
+                },
+                {
+                    "role": "assistant",
+                    "content": answerL[i],
+                },
+            ]
         }
     )
 
