@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import asyncio
 
-from textEX import textList
+from textEX import *
 from const import *
 from utils import inject_variables
 from reviewEX import *
@@ -18,7 +18,7 @@ client = AsyncOpenAI(api_key=GPT_API_KEY)
 
 
 # 출판사 키워드 추출
-async def extractPublisher(client):
+async def extractPublisher(client, textList):
     for i in range(len(textList)):
         prompt = inject_variables(publisher_keyword_extract_prompt, textList[i])
         response = await client.chat.completions.create(
@@ -58,8 +58,8 @@ async def extractReview(client):
 
 
 async def main():
-    # await extractPublisher(client=client)
-    await extractReview(client=client)
+    await extractPublisher(client=client, textList=newnewL)
+    # await extractReview(client=client)
 
 
 # main 함수 실행
