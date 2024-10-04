@@ -57,14 +57,37 @@ async def extractReview(client):
         print(str(i) + "\n" + temp["choices"][0]["message"]["content"] + "\n")
 
 
+async def extractGenre(client, textList):
+    for i in range(len(textList)):
+        prompt = inject_variables(genre_extract_prompt, textList[i])
+        response = await client.chat.completions.create(
+            model=OPENAI_MODEL,
+            messages=[
+                {"role": "system", "content": prompt + prompt_always_kor},
+            ],
+            # temperature=1.3,
+            # top_p=0.8,
+            # frequency_penalty=0,
+            # presence_penalty=1,
+        )
+
+        # print(response)
+        temp = response.model_dump()
+        print(temp["choices"][0]["message"]["content"] + "\n")
+
+
 async def main():
     # await extractPublisher(client=client, textList=testSet, model=OPENAI_MODEL)
-    await extractPublisher(
-        client=client,
-        textList=testSet,
-        model="ft:gpt-4o-mini-2024-07-18:personal::ADV4GCef",
-    )
+
+    # await extractPublisher(
+    #     client=client,
+    #     textList=testSet,
+    #     model="ft:gpt-4o-mini-2024-07-18:personal::ADV4GCef",
+    # )
+
     # await extractReview(client=client)
+
+    await extractGenre(client=client, textList=testSet)
 
 
 # main 함수 실행

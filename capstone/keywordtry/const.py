@@ -2,7 +2,6 @@ prompt_always_kor = """
 You must answer not sentence, just keywords in Korean language for your responses. You have to use only Korean.
 """
 
-# 아직 작가 이름 못둘러쌈..
 publisher_keyword_extract_prompt = """
 You are a word-renowned book critic.
 Your task is to extract 5 keywords from a text which represents introductions and summary of a book written by publisher.
@@ -67,6 +66,22 @@ The book title is {{title}} and here is the review.
 {{content}}
 """
 
-new_review_keyword_extract_prompt = """
+genre_extract_prompt = """
+You are a word-renowned text editor.
+Your task is to classify genre of books by a text.
+Thet text represents introductions and summary of a books written by publisher.
+Extract one genre from the text.
 
+Here's how you should extract genre:
+1. You have to translate title and review to English.
+2. Analyze the text to know genre and theme of the book.
+3. Define its genre in specific words.
+    Genre shouldn't be just single words like '로맨스' or '판타지'.
+    Genre should be more descriptive phrases like '역사 로맨스 장르', '잔잔한 현대 로맨스 장르', '현대판타지 SF 장르'.
+
+This is precaution what you should be careful for:
+- Just tell me the genre words, no small talk.
+
+The book title is {{title}} and here is the review.
+{{content}}
 """
