@@ -76,12 +76,14 @@ Here's how you should extract genre:
 1. You have to translate title and review to English.
 2. Analyze the text to know genre and theme of the book.
 3. Define its genre in specific words.
-    Genre shouldn't be just single words like '로맨스' or '판타지'.
-    Genre should be more descriptive phrases like '역사 로맨스 장르', '잔잔한 현대 로맨스 장르', '현대판타지 SF 장르'.
+    Genre shouldn't be just single words like 'romance', 'fantasy', or 'history'.
+    Genre should be more descriptive phrases like 'Historical Romance Novel', 'Modern Fantasy SF Novel', 'Historical Biographical Novel'.
 
 This is precaution what you should be careful for:
-- Just tell me the genre words, no small talk.
+- Just tell me the genre keywords less then 5 words, no small talk.
+- follow the answer format given in the example above.
+- Choose the most representative and common genre.
 
-The book title is {{title}} and here is the review.
+The book title is {{title}} and here is the text.
 {{content}}
 """

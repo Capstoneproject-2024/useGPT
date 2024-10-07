@@ -65,10 +65,10 @@ async def extractGenre(client, textList):
             messages=[
                 {"role": "system", "content": prompt + prompt_always_kor},
             ],
-            # temperature=1.3,
-            # top_p=0.8,
-            # frequency_penalty=0,
-            # presence_penalty=1,
+            temperature=0.5,
+            top_p=0.5,
+            frequency_penalty=0,
+            presence_penalty=1,
         )
 
         # print(response)
