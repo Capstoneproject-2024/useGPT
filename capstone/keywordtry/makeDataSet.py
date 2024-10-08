@@ -4,7 +4,7 @@ import json
 from const import *
 from utils import *
 
-f = open("../../bookInfo.csv", mode="r", encoding="utf-8")
+f = open("c:/Dev/keywordextract/testBookInfo.csv", mode="r", encoding="utf-8")
 rdr = csv.reader(f)
 
 count = 0
@@ -19,12 +19,12 @@ for line in rdr:
         }
     )
     answerL.append(line[2])
-    if count == 50:
+    if count == 10:
         break
 
 
 forJsonl = []
-for i in range(50):
+for i in range(10):
     forJsonl.append(
         {
             "messages": [
@@ -50,7 +50,7 @@ for i in range(50):
     )
 
 # jsonl 파일로 저장
-with open("../../learnData.jsonl", "w", encoding="utf-8") as f:
+with open("../../validationData.jsonl", "w", encoding="utf-8") as f:
     for entry in forJsonl:
         json_str = json.dumps(
             entry, ensure_ascii=False

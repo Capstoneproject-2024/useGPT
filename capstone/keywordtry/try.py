@@ -12,6 +12,7 @@ load_dotenv()
 
 GPT_API_KEY = os.environ.get("GPT_API_KEY")
 OPENAI_MODEL = "gpt-4o-mini-2024-07-18"
+FINETUNEING_MODEL = os.environ.get("FINETUNING_MODEL")
 
 
 client = AsyncOpenAI(api_key=GPT_API_KEY)
@@ -22,7 +23,7 @@ async def extractPublisher(client, textList, model):
     for i in range(len(textList)):
         prompt = inject_variables(publisher_keyword_extract_prompt, textList[i])
         response = await client.chat.completions.create(
-            model=OPENAI_MODEL,
+            model=model,
             messages=[
                 {"role": "system", "content": prompt + prompt_always_kor},
             ],
@@ -30,6 +31,26 @@ async def extractPublisher(client, textList, model):
             top_p=0.8,
             frequency_penalty=0,
             presence_penalty=1,
+        )
+
+        # print(response)
+        temp = response.model_dump()
+        print(temp["choices"][0]["message"]["content"] + "\n")
+
+
+# 출판사 키워드 추출 with 파인튜닝
+async def extractPublisherFT(client, textList, model):
+    for i in range(len(textList)):
+        prompt = inject_variables(publisher_keyword_extract_prompt, textList[i])
+        response = await client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": prompt + prompt_always_kor},
+            ],
+            # temperature=1.3,
+            # top_p=0.8,
+            # frequency_penalty=0,
+            # presence_penalty=1,
         )
 
         # print(response)
@@ -57,6 +78,7 @@ async def extractReview(client):
         print(str(i) + "\n" + temp["choices"][0]["message"]["content"] + "\n")
 
 
+# 장르
 async def extractGenre(client, textList):
     for i in range(len(textList)):
         prompt = inject_variables(genre_extract_prompt, textList[i])
@@ -77,17 +99,17 @@ async def extractGenre(client, textList):
 
 
 async def main():
-    # await extractPublisher(client=client, textList=testSet, model=OPENAI_MODEL)
+    # await extractPublisher(client=client, textList=forValidationSet, model=OPENAI_MODEL)
 
-    # await extractPublisher(
-    #     client=client,
-    #     textList=testSet,
-    #     model="ft:gpt-4o-mini-2024-07-18:personal::ADV4GCef",
-    # )
+    await extractPublisherFT(
+        client=client,
+        textList=testSet,
+        model=FINETUNEING_MODEL,
+    )
 
     # await extractReview(client=client)
 
-    await extractGenre(client=client, textList=testSet)
+    # await extractGenre(client=client, textList=testSet)
 
 
 # main 함수 실행
