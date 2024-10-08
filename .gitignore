@@ -11,4 +11,5 @@ __pycache__/
 #일단 학습 데이터 올리지말자
 bookInfo.csv
 learnData.jsonl
-
+capstone/keywordtry/textEX.py
+capstone/keywordtry/reviewEX.py
