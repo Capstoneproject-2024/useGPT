@@ -26,7 +26,7 @@ async def makeQuestion(clinet, keywordList):
                 {"role": "system", "content": prompt + prompt_always_kor},
             ],
             temperature=1,
-            top_p=1,
+            top_p=0.75,
             frequency_penalty=0.5,
             presence_penalty=1,
         )

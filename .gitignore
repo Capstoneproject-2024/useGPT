@@ -10,7 +10,9 @@ __pycache__/
 
 #일단 학습 데이터 올리지말자
 bookInfo.csv
+bookDescriptions.csv
 testbookInfo.csv
+genreExtract.csv
 learnData.jsonl
 validationData.jsonl
 capstone/keywordtry/textEX.py
