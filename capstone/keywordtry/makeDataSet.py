@@ -80,7 +80,7 @@ async def makeGenreDB():
     for line in rdr:
         bookInfoL.append({"title": line[0], "content": line[2]})
         # count += 1
-        # if count == 3:    
+        # if count == 3:
         #     break
 
     result = await extractGenre(client=client, textList=bookInfoL)
@@ -99,8 +99,40 @@ async def makeGenreDB():
             writer.writerow(g)
 
 
+async def makeBookKeywordDB():
+    f = open("c:/Dev/keywordextract/bookDescriptions.csv", mode="r", encoding="utf-8")
+    rdr = csv.reader(f)
+
+    # count = 0
+    bookInfoL = []
+
+    for line in rdr:
+        bookInfoL.append({"title": line[0], "content": line[2]})
+        # count += 1
+        # if count == 10:
+        #     break
+
+    result = await extractPublisher(
+        client=client, textList=bookInfoL, model=OPENAI_MODEL
+    )
+
+    with open(
+        "c:/Dev/keywordextract/bookKeywordExtract.csv",
+        mode="w",
+        newline="",
+        encoding="utf-8",
+    ) as file:
+        # csv.writer 객체 생성
+        writer = csv.writer(file)
+
+        # 데이터를 한 줄씩 작성
+        for g in result:
+            writer.writerow(g)
+
+
 async def main():
-    await makeGenreDB()
+    # await makeGenreDB()
+    await makeBookKeywordDB()
 
 
 # main 함수 실행

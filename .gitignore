@@ -13,6 +13,7 @@ bookInfo.csv
 bookDescriptions.csv
 testbookInfo.csv
 genreExtract.csv
+bookKeywordExtract.csv
 learnData.jsonl
 validationData.jsonl
 capstone/keywordtry/textEX.py
