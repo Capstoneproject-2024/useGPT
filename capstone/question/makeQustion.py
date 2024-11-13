@@ -19,7 +19,9 @@ client = AsyncOpenAI(api_key=GPT_API_KEY)
 async def makeQuestion(clinet, keywordList):
     questions = []
     for i in range(len(keywordList)):
-        prompt = inject_variables(SecondLevel_Question_prompt, keywordList[i])
+        prompt = inject_variables(
+            SecondLevel_Question_prompt, keywordList[i]
+        )  # 기존 프롬프트 사용 시 temperature = 0.75로 변경
         response = await client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[

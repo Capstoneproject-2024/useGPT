@@ -109,7 +109,7 @@ async def makeBookKeywordDB():
     for line in rdr:
         bookInfoL.append({"title": line[0], "content": line[2]})
         # count += 1
-        # if count == 10:
+        # if count == 3:
         #     break
 
     result = await extractPublisher(
@@ -128,6 +128,7 @@ async def makeBookKeywordDB():
         # 데이터를 한 줄씩 작성
         for g in result:
             writer.writerow(g)
+        # file.flush()
 
 
 async def main():
