@@ -8,3 +8,14 @@ keyword/
 __pycache__/
 *.pyc
 
+#일단 학습 데이터 올리지말자
+bookInfo.csv
+bookDescriptions.csv
+testbookInfo.csv
+genreExtract.csv
+bookKeywordExtract.csv
+learnData.jsonl
+validationData.jsonl
+capstone/keywordtry/textEX.py
+capstone/keywordtry/reviewEX.py
+capstone/question/testEX.py
