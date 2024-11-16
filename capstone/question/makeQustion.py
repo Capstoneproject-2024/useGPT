@@ -1,3 +1,4 @@
+import re
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 import os
@@ -16,7 +17,7 @@ OPENAI_MODEL = "gpt-4o-mini-2024-07-18"
 client = AsyncOpenAI(api_key=GPT_API_KEY)
 
 
-async def makeQuestion(clinet, keywordList):
+async def makeQuestion(client, keywordList):
     questions = []
     for i in range(len(keywordList)):
         prompt = inject_variables(
@@ -35,20 +36,22 @@ async def makeQuestion(clinet, keywordList):
 
         # print(response)
         temp = response.model_dump()
-        questions.append(temp)
-        print(
-            "text : "
-            + keywordList[i]["text"]
-            + " keyword :"
-            + keywordList[i]["keyword"]
-        )
-        print(temp["choices"][0]["message"]["content"] + "\n")
+        answer = temp["choices"][0]["message"]["content"]
+        splitAnswer = answer.split("\n")
+        questions = [re.sub(r"^\d+\.\s*", "", question) for question in splitAnswer]
+        # print(
+        #     "text : "
+        #     + keywordList[i]["text"]
+        #     + " keyword :"
+        #     + keywordList[i]["keyword"]
+        # )
+        # print(temp["choices"][0]["message"]["content"] + "\n")
     return questions
 
 
-async def main():
-    await makeQuestion(clinet=client, keywordList=sample1)
+# async def main():
+#     await makeQuestion(clinet=client, keywordList=sample1)
 
 
 # main 함수 실행
-asyncio.run(main())
+# asyncio.run(main())

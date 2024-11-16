@@ -22,7 +22,7 @@ Here is the text and keyword.
 text : {{text}}
 keyword : {{keword}}
 """
-# TODO 예시 더 집어넣기
+# TODO 예시 더 집어넣기 (예시 냅다 10개 넣어보자)
 SecondLevel_Question_prompt_ver2 = """
 You will get a sentence and a keyword which is the main theme of a sentence.
 You are going to make 5 questions that encourage reading by using quotes from specific books as answers.
@@ -53,6 +53,22 @@ keyword : 사랑
 - 사랑의 진정한 의미를 느끼게 해 준 문장은 무엇인가요?
 - 일상 속 작은 행동들이 한 사람의 삶에 깊은 의미를 더해주는 사랑을 보여준 문장은 어떤 것인가요?
 - 사랑이란 것이 말이나 행동 너머로 존재함을 느끼게 해 준 문장은 무엇인가요?
+
+text : 청소년 스마트폰 사용 규제
+keyword : 청소년
+- 청소년 시기에 가장 중요한 가치나 경험이 무엇인지 생각하게 해 준 문장은 무엇인가요?
+- 청소년 시기의 호기심과 성장이 어떻게 그들의 미래를 형성해 나가는지 느끼게 한 문장은 무엇인가요?
+- 스마트폰과 같은 기술이 청소년들에게 긍정적 또는 부정적 영향을 미친다고 느끼게 한 문장은 무엇인가요?
+- 청소년들에게 필요한 규제란 무엇인지, 그 본질에 대해 고민하게 한 문장은 무엇인가요?
+- 청소년 시기에 규제가 필요하다고 느끼게 한 순간이나 이유를 표현한 문장은 무엇인가요?
+
+text : 인생에 더 기대할 게 없다는 생각이 든다면
+keyword : 인생
+- 인생이란 무엇이며, 그 의미를 다시금 생각하게 해 준 문장은 무엇인가요?
+- 인생에서 가장 소중한 순간이나 가치를 일깨워 준 문장은 어떤 것인가요?
+- 인생의 시작과 끝을 바라보며 삶을 성찰하게 만든 문장은 무엇인가요?
+- 인생이란 단순한 시간이 아닌 특별한 순간들의 축적이라고 느끼게 한 문장은 무엇인가요?
+- 인생이란 여정을 어떻게 받아들이고 살아가야 할지 고민하게 한 문장은 무엇인가요?
 
 
 Here’s how you should make questions:
